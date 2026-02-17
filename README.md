@@ -1,59 +1,148 @@
-# Quantium Virtual Internship - Retail Strategy and Analytics
+# Quantium Data Analytics Job Simulation
+
+A end-to-end retail analytics project completed as part of the **Quantium Data Analytics Virtual Experience Program**. The simulation involved analysing chip sales data to uncover customer insights and evaluate the impact of a new store layout trial across three retail stores.
+
+---
+
+## Project Structure
+```
+quantium-data-analytics/
+│
+├── Quantium_Task_1.ipynb                        # Customer & sales analysis
+├── Quantium_Task_2.ipynb                        # Trial store layout evaluation
+│
+├── reports/
+│   ├── Task1_Customer_Analytics_Report.docx     # Detailed Word report — Task 1
+│   ├── Task2_Trial_Store_Evaluation_Report.docx # Detailed Word report — Task 2
+│   └── Executive_Summary.pptx                   # PowerPoint presentation
+│
+└── data/
+    └── QVI_transaction_data_clean.csv           # Cleaned dataset (prepared in Excel)
+```
+
+---
 
 ## Project Overview
-This repository contains the complete analysis for the Quantium Virtual Internship. The goal was to act as a Data Analyst and Consultant for the Category Manager of Chips, analyzing transaction data to identify customer segments and evaluating a trial store layout to recommend a strategic rollout.
 
-**Key Tools:** Python (Pandas, Matplotlib), Excel, PowerPoint, Jupiter Notebooks.
+### Task 1 — Customer & Sales Analysis
+Explored a full year of chip sales data (July 2018 – June 2019) to identify which customer segments drive the most revenue, what products they prefer, and what behavioural patterns explain their spending.
 
----
-
-## Task 1: Data Preparation & Customer Analytics
-**Goal:** Analyze purchasing trends to identify the high-value customer segments for the chips category.
-
-### Methodology
-*   **Data Cleaning:** Removed outliers (e.g., a commercial transaction of 200 packets) and non-chip products (salsa) to ensure data integrity.
-*   **Feature Engineering:** Created `PACK_SIZE` and `BRAND` features from product names, standardizing brand variations (e.g., "Red" to "RRD").
-*   **Segmentation:** Grouped customers by `LIFESTAGE` and `PREMIUM_CUSTOMER` status to calculate metrics.
-
-### Key Insights
-*   **Top Segment:** "Mainstream - Young Singles/Couples" are the highest value target. While they buy fewer units than families, they pay the **highest price per unit** ($4.00+), indicating a willingness to pay for premium products.
-*   **Brand Affinity:** This segment is **24% more likely** to purchase **Tyrells** chips compared to the general population.
-*   **Pack Size:** They prefer 270g "Sharing Packs" (Lift: 1.27x).
+### Task 2 — Trial Store Layout Evaluation
+Evaluated whether a new chip aisle layout introduced in three trial stores (77, 86, 88) produced a statistically significant improvement in sales and customer numbers compared to matched control stores.
 
 ---
 
-## Task 2: Experimentation & Uplift Testing
-**Goal:** Evaluate the performance of a store trial (new layout) in Stores 77, 86, and 88 against a control group to determine if the strategy should be rolled out.
+## Tools & Technologies
 
-### Methodology
-*   **Control Store Selection:** Used Python to calculate **Pearson Correlation** and **Magnitude Distance** to find control stores that matched the trial stores' pre-trial behavior.
-    *   *Store 77* matched with *Store 233*
-    *   *Store 86* matched with *Store 155*
-    *   *Store 88* matched with *Store 91*
-*   **Uplift Calculation:** Compared total sales of Trial vs. Control during the trial period (Feb 2019 - April 2019).
-
-### Results
-*   **Store 77:** **+17.9%** Uplift (Significant Success)
-*   **Store 88:** **+48.4%** Uplift (Significant Success)
-*   **Store 86:** **+4.3%** Uplift (Modest Growth)
-*   **Conclusion:** The trial was highly effective in 2 out of 3 locations.
+| Tool | Purpose |
+|------|---------|
+| **Microsoft Excel / Power Query** | Initial data cleaning, outlier removal, feature creation |
+| **Python (pandas, numpy)** | Data wrangling and segmentation analysis |
+| **Matplotlib & Seaborn** | Data visualisation |
+| **SciPy** | Statistical testing (independent t-test) |
+| **Microsoft Word / PowerPoint** | Business reporting and presentation |
 
 ---
 
-## Task 3: Commercial Recommendations
-**Goal:** Synthesize technical findings into a clear, commercial strategy for the Category Manager.
+## Methodology
 
-### Strategic Recommendations
-1.  **Rollout Strategy:** Expand the new trial layout to all "Mainstream" focused stores, given the significant uplift found in Task 2.
-2.  **Assortment Strategy:** Increase stock of **Tyrells** and **Doritos** in **270g pack sizes** to cater to the high-margin "Young Singles" segment.
-3.  **Placement:** Position these high-value products at eye level in high-traffic aisles to maximize impulse purchases.
+### Data Cleaning
+- Initial cleaning was performed in **Microsoft Excel** before importing into Python via `pandas`
+- Removed outliers such as a commercial bulk transaction of **200 packets** that skewed the data
+- Removed non-chip products (e.g., salsa) that had been incorrectly included in the dataset
+- Verified there were **no missing values** across all columns after cleaning
+
+### Feature Engineering
+- Extracted **`PACK_SIZE`** (in grams) and **`BRAND`** directly from raw product name strings
+- Standardised inconsistent brand naming conventions (e.g., `"Red"` → `"RRD"`, `"Snbts"` → `"Sunbites"`)
+- Engineered a **`PRICE`** column (`TOT_SALES / PROD_QTY`) for per-unit price analysis
+- Created **`YEAR_MONTH`** period column for monthly trend aggregation in Task 2
+
+### Customer Segmentation
+- Grouped customers by **`LIFESTAGE`** (e.g., Young Singles/Couples, Retirees, Older Families) and **`PREMIUM_CUSTOMER`** status (Budget, Mainstream, Premium)
+- Calculated segment-level metrics: total sales, unique customer count, average units per customer, and average price per unit
+
+### Control Store Selection (Task 2)
+- Matched each trial store to the most similar control store using a **combined similarity score** built from:
+  - **Pearson correlation** of monthly sales trends
+  - **Magnitude distance** of absolute sales levels
+- Applied a **95% confidence interval** around scaled control store performance to determine whether trial store results were statistically significant
 
 ---
 
-## Code Structure
-*   `Task_1_Data_Preparation.ipynb`: Contains the cleaning logic, outlier removal, and the 4 key metric visualizations.
-*   `Task_2_Uplift_Testing.ipynb`: Contains the control store matching function and the T-test visualization for sales uplift.
+## Key Findings
 
-## Visualizations
-<img width="1510" height="708" alt="Screenshot 2026-02-02 191351" src="https://github.com/user-attachments/assets/4f3e10a6-972a-4768-bcee-dc61ad4ed830" />
+### Task 1
+- **Top revenue segments:** Budget Older Families, Mainstream Young Singles/Couples, Mainstream Retirees
+- **Most popular pack size:** 175g — outsells every other size by a large margin
+- **Most purchased brand:** Kettle chips, ahead of Smiths and Pringles
+- **Seasonal pattern:** Sales spike through December up to Christmas Eve, then drop to **zero** on Christmas Day (stores closed)
+- **Price insight:** Mainstream Young and Mid-Age Singles/Couples pay a statistically significantly higher price per bag than Budget or Premium shoppers in the same age group (*p* < 0.05)
+- **Brand affinity:** Mainstream Young Singles/Couples are 23% more likely to buy Tyrrells and 56% less likely to buy Burger brand compared to other segments
 
+### Task 2
+| Trial Store | Control Store | Sales Result | Customer Result | Verdict |
+|-------------|--------------|-------------|----------------|---------|
+| Store 77 | Store 233 | ✅ Significant uplift (2/3 months) | ✅ Significant uplift (2/3 months) | Roll out |
+| Store 86 | Store 155 | ⚠️ No significant uplift | ✅ Significant uplift (all 3 months) | Pair with promotions |
+| Store 88 | Store 237 | ✅ Significant uplift (2/3 months) | ✅ Significant uplift (all 3 months) | Roll out — strongest results |
+
+---
+
+## Sample Visualisations
+
+> *Charts generated in Python using Matplotlib and Seaborn*
+
+- Total chip sales timeline with Christmas Day annotation
+ <img width="1486" height="690" alt="image" src="https://github.com/user-attachments/assets/f6c6ef73-0444-482f-96e1-7a743d3f06fe" />
+
+- December daily sales breakdown highlighting the Christmas closure
+  <img width="1246" height="602" alt="image" src="https://github.com/user-attachments/assets/b58f7730-395b-4068-a39a-fe5ed9d12cc4" />
+
+- Stacked bar charts of sales and customer counts by lifestage and premium tier
+  <img width="1554" height="624" alt="image" src="https://github.com/user-attachments/assets/90f066b8-97e9-4267-a4ad-6f0cade8c42f" />
+
+- Confidence interval charts for each trial store vs its control 
+  <img width="1005" height="701" alt="image" src="https://github.com/user-attachments/assets/380072ba-4838-4e61-b9b4-d7327a58d661" />
+
+
+---
+
+## Business Recommendations
+
+1. **Stock aggressively in the first 3 weeks of December** — the pre-Christmas sales surge is consistent and predictable
+2. **Prioritise 175g pack shelf space** — it is the dominant purchase size across all customer types
+3. **Protect Kettle brand availability** — it is the clear market leader and likely drives store visits
+4. **Run bundle promotions for Family segments** — they buy the most bags per trip and respond to volume deals
+5. **Roll out the new layout to stores similar to Store 88 first** — it produced the strongest and most consistent trial results
+6. **At Store 86-type locations, pair the new layout with in-store promotions** — the layout attracts customers but needs a conversion trigger to lift sales
+
+---
+
+## How to Run
+```bash
+# Clone the repository
+git clone https://github.com/your-username/quantium-data-analytics.git
+cd quantium-data-analytics
+
+# Install dependencies
+pip install pandas numpy matplotlib seaborn scipy
+
+# Launch notebooks
+jupyter notebook
+```
+
+> **Note:** The raw dataset is sourced from the [Quantium Virtual Experience Program](https://www.theforage.com/virtual-internships/prototype/NkaC7knWtjSbi6aYv/Data-Analytics) on Forage. You will need to download it directly from the program to run the notebooks.
+
+---
+
+## Certificate
+
+Completed via **[Forage](https://www.theforage.com/)** — Quantium Data Analytics Virtual Experience Program
+
+---
+
+## Author
+
+**Chella Kamina**
+[LinkedIn](https://linkedin.com/in/rkchellah) • [GitHub](https://github.com/rkchella)
