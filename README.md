@@ -74,7 +74,7 @@ Evaluated whether a new chip aisle layout introduced in three trial stores (77, 
 
 ### Task 1
 - **Top revenue segments:** Budget Older Families, Mainstream Young Singles/Couples, Mainstream Retirees
-- **Most popular pack size:** 175g — outsells every other size by a large margin
+- **Most popular pack size:** 175g outsells every other size by a large margin
 - **Most purchased brand:** Kettle chips, ahead of Smiths and Pringles
 - **Seasonal pattern:** Sales spike through December up to Christmas Eve, then drop to **zero** on Christmas Day (stores closed)
 - **Price insight:** Mainstream Young and Mid-Age Singles/Couples pay a statistically significantly higher price per bag than Budget or Premium shoppers in the same age group (*p* < 0.05)
