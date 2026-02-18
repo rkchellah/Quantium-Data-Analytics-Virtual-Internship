@@ -110,12 +110,12 @@ Evaluated whether a new chip aisle layout introduced in three trial stores (77, 
 
 ## Business Recommendations
 
-1. **Stock aggressively in the first 3 weeks of December** — the pre-Christmas sales surge is consistent and predictable
-2. **Prioritise 175g pack shelf space** — it is the dominant purchase size across all customer types
-3. **Protect Kettle brand availability** — it is the clear market leader and likely drives store visits
-4. **Run bundle promotions for Family segments** — they buy the most bags per trip and respond to volume deals
-5. **Roll out the new layout to stores similar to Store 88 first** — it produced the strongest and most consistent trial results
-6. **At Store 86-type locations, pair the new layout with in-store promotions** — the layout attracts customers but needs a conversion trigger to lift sales
+1. **Stock aggressively in the first 3 weeks of December**: The pre-Christmas sales surge is consistent and predictable
+2. **Prioritise 175g pack shelf space**: It is the dominant purchase size across all customer types
+3. **Protect Kettle brand availability**: It is the clear market leader and likely drives store visits
+4. **Run bundle promotions for Family segments**: They buy the most bags per trip and respond to volume deals
+5. **Roll out the new layout to stores similar to Store 88 first**: It produced the strongest and most consistent trial results
+6. **At Store 86-type locations, pair the new layout with in-store promotions**: The layout attracts customers but needs a conversion trigger to lift sales
 
 ---
 
