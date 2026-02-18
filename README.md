@@ -24,10 +24,10 @@ quantium-data-analytics/
 
 ## Project Overview
 
-### Task 1 — Customer & Sales Analysis
+### Task 1: Customer & Sales Analysis
 Explored a full year of chip sales data (July 2018 – June 2019) to identify which customer segments drive the most revenue, what products they prefer, and what behavioural patterns explain their spending.
 
-### Task 2 — Trial Store Layout Evaluation
+### Task 2: Trial Store Layout Evaluation
 Evaluated whether a new chip aisle layout introduced in three trial stores (77, 86, 88) produced a statistically significant improvement in sales and customer numbers compared to matched control stores.
 
 ---
