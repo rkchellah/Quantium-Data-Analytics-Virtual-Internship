@@ -138,7 +138,7 @@ jupyter notebook
 
 ## Certificate
 
-Completed via **[Forage](https://www.theforage.com/)** — Quantium Data Analytics Virtual Experience Program
+Completed via **[Forage](https://www.theforage.com/)** Quantium Data Analytics Virtual Experience Program
 
 ---
 
